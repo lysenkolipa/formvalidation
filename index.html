@@ -1,0 +1,130 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/modal.css" rel="stylesheet">
+    <link href="css/datepicker.css" rel="stylesheet">
+
+
+</head>
+<body>
+<h1>FORM validation</h1><br>
+<form action="" class="form" method="post">
+        <div class="form-container">
+            <div class = 'left-part'>
+                <div>
+                    <label><sup>*</sup> First Name</label>
+                </div>
+                <div>
+                    <input type="text" class="firstName field form-field" placeholder="Enter your First Name">
+                </div>
+                <div>
+                    <label><sup>*</sup> Last Name</label>
+                </div>
+                <div>
+                    <input type="text" class="lastName field form-field" placeholder="Enter your Last Name">
+                </div>
+                <div>
+                    <div>
+                        <label><sup>*</sup> Birthday</label>
+                    </div>
+                    <div>
+                        <input type="text" id="datepicker" class="birthday field form-field" autocomplete="off" placeholder="Enter your date of birth">
+                    </div>
+                </div>
+                <div>
+                    <label><sup>*</sup> Country</label>
+                </div>
+                <div>
+                    <select class="country field form-field">
+                        <option></option>
+                        <option>Ukraine</option>
+                        <option>China</option>
+                        <option>USA</option>
+                        <option>Germany</option>
+                        <option>Poland</option>
+                        <option>Greece</option>
+                        <option>China</option>
+                    </select>
+                </div>
+                <br>
+                <div>
+                    <label><sup>*</sup> Address</label>
+                </div>
+                <div>
+                    <input type="text" class="address field form-field" placeholder="Enter your address">
+                </div>
+            </div>
+            <div class = 'right-part'>
+                <div>
+                    <label><sup>*</sup> Email</label>
+                </div>
+                <div>
+                    <input type="" class="email field form-field" placeholder="Enter your email">
+                           <!--pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$">-->
+                </div>
+                <div>
+                    <label><sup>*</sup> Password</label>
+                </div>
+                <div>
+                    <input type="password" class="password field form-field" placeholder="Enter your password">
+                </div>
+                <div>
+                    <label>Password Conformation</label>
+                </div>
+                <div>
+                    <input type="password" class="passwordConfirmation field form-field" placeholder="Confirm your password">
+                </div>
+                <br>
+                <div>
+                    <label><sup>*</sup> Notes</label>
+                </div>
+                <div>
+                    <textarea class="note field form-textarea"></textarea>
+                </div>
+                <div ><sup>*</sup> Sex</div>
+                <div class="radio">
+                    <div >
+                        <label>Male</label>
+                    </div>
+                    <div>
+                        <input name="gender" type="radio" value="male" class="gender field">
+                    </div>
+                    <div>
+                        <label>Female</label>
+                    </div>
+                    <div>
+                        <input name="gender" type="radio" value="female" class="gender field">
+                    </div>
+                    <div>
+                        <label>Other</label>
+                    </div>
+                    <div>
+                        <input name="gender" type="radio" value="other" class="gender field" checked>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <input class="btn" type="submit" value="Submit">
+</form>
+
+<section class="modal">
+    <div class="modal-container">
+        <p>Validation Success</p>
+        <a href="index.html">
+            <button>Close</button>
+        </a>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" crossorigin="anonymous"></script>
+<script src="js/datepicker.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
