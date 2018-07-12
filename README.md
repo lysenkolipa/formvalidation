@@ -1,13 +1,13 @@
 # form validation
 This very short project shows how we can use HTML + CSS + JS for realizing our ideas.
 
-Plugins/Libraries
+## Plugins/Libraries
 Here was used only datepicker from JQuery UI
 
-Installation
+## Installation
 You should to clone this repository https://github.com/lysenkolipa/formvalidation.git and use it :)
 
-DEMO
+## DEMO
 
 lysenkolipa.github.io/form-validation
 
