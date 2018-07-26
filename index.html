@@ -10,34 +10,29 @@
 </head>
 <body>
 <h1>FORM validation</h1><br>
-<form action="" class="form" method="post">
+<form action="#" id="form" class="form" method="post">
         <div class="form-container">
             <div class = 'left-part'>
+                <div><label><sup>*</sup> First Name</label></div>
+                <div><input type="text" name="fname" class="firstName field form-field" data-required=true
+                            placeholder="Enter your First Name"></div>
+                <span id="fnames"></span>
+
+                <div><label><sup>*</sup> Last Name</label></div>
+                <div><input type="text" name="lname" class="lastName field form-field" data-required=true
+                            placeholder="Enter your Last Name"></div>
+                <span id="lnames"></span>
+
                 <div>
-                    <label><sup>*</sup> First Name</label>
+                    <div><label><sup>*</sup> Birthday</label></div>
+                    <div><input type="text" id="datepicker" name="birthday" class="birthday field form-field" autocomplete="off"
+                                data-required=true  placeholder="Enter your date of birth"></div>
+                    <span id="birthday"></span>
                 </div>
+
+                <div><label><sup>*</sup> Country</label></div>
                 <div>
-                    <input type="text" class="firstName field form-field" placeholder="Enter your First Name">
-                </div>
-                <div>
-                    <label><sup>*</sup> Last Name</label>
-                </div>
-                <div>
-                    <input type="text" class="lastName field form-field" placeholder="Enter your Last Name">
-                </div>
-                <div>
-                    <div>
-                        <label><sup>*</sup> Birthday</label>
-                    </div>
-                    <div>
-                        <input type="text" id="datepicker" class="birthday field form-field" autocomplete="off" placeholder="Enter your date of birth">
-                    </div>
-                </div>
-                <div>
-                    <label><sup>*</sup> Country</label>
-                </div>
-                <div>
-                    <select class="country field form-field">
+                    <select class="country field form-field" name="country" data-required=true>
                         <option></option>
                         <option>Ukraine</option>
                         <option>China</option>
@@ -48,66 +43,51 @@
                         <option>China</option>
                     </select>
                 </div>
+                <span id="country"></span>
                 <br>
-                <div>
-                    <label><sup>*</sup> Address</label>
-                </div>
-                <div>
-                    <input type="text" class="address field form-field" placeholder="Enter your address">
-                </div>
+
+                <div><label><sup>*</sup> Address</label></div>
+                <div><input type="text" name="address" class="address field form-field" data-required=true
+                            placeholder="Enter your address"></div>
+                <span id="address"></span>
             </div>
+
             <div class = 'right-part'>
-                <div>
-                    <label><sup>*</sup> Email</label>
-                </div>
-                <div>
-                    <input type="" class="email field form-field" placeholder="Enter your email">
-                           <!--pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$">-->
-                </div>
-                <div>
-                    <label><sup>*</sup> Password</label>
-                </div>
-                <div>
-                    <input type="password" class="password field form-field" placeholder="Enter your password">
-                </div>
-                <div>
-                    <label>Password Conformation</label>
-                </div>
-                <div>
-                    <input type="password" class="passwordConfirmation field form-field" placeholder="Confirm your password">
-                </div>
+                <div><label><sup>*</sup> Email</label></div>
+                <div><input type="email" name="email" class="email field form-field" data-required=true
+                            placeholder="Enter your email"></div>
+                <span id="email"></span>
+
+                <div><label><sup>*</sup> Password</label></div>
+                <div><input type="password" name="password"  class="password field form-field" data-required=true
+                            placeholder="Enter your password"></div>
+                <span id="passwords"></span>
+
+                <div><label>Password Conformation</label></div>
+                <div><input type="password" name="confpassword" class="passwordConfirmation field form-field"
+                            data-required=true
+                            placeholder="Confirm your password"></div>
+                <span id="confirmpassword"></span>
                 <br>
-                <div>
-                    <label><sup>*</sup> Notes</label>
-                </div>
-                <div>
-                    <textarea class="note field form-textarea"></textarea>
-                </div>
+
+                <div><label><sup>*</sup> Notes</label></div>
+                <div><textarea name="notes" class="note field form-textarea" data-required=true></textarea></div>
+                <span id="notes"></span>
+
                 <div ><sup>*</sup> Sex</div>
                 <div class="radio">
-                    <div >
-                        <label>Male</label>
-                    </div>
-                    <div>
-                        <input name="gender" type="radio" value="male" class="gender field">
-                    </div>
-                    <div>
-                        <label>Female</label>
-                    </div>
-                    <div>
-                        <input name="gender" type="radio" value="female" class="gender field">
-                    </div>
-                    <div>
-                        <label>Other</label>
-                    </div>
-                    <div>
-                        <input name="gender" type="radio" value="other" class="gender field" checked>
-                    </div>
+                    <div ><label>Male</label></div>
+                    <div><input name="gender" type="radio" value="male" class="gender field" data-required=true checked></div>
+                    <div><label>Female</label></div>
+                    <div><input name="gender" type="radio" value="female" class="gender field"></div>
+                    <div><label>Other</label></div>
+                    <div><input name="gender" type="radio" value="other" class="gender field"></div>
                 </div>
-
+                <span id="sex"></span>
             </div>
         </div>
-        <input class="btn" type="submit" value="Submit">
+
+        <input class="btn" type="submit" name="submit" value="Submit">
 </form>
 
 <section class="modal">
