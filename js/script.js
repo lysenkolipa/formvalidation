@@ -6,7 +6,6 @@ class Form
      this.validator = new Validator(this);
  }
 
-
  fieldSetValidate() {
      this.fieldSet.forEach(function (field) {
          field.validate();
@@ -23,10 +22,10 @@ class Field
         this.validateSet = [this.checkEmpty];
     }
 
-    checkEmpty(contecst) {
-        let domElement = document.querySelector(contecst.selector);
+    checkEmpty(context) {
+        let domElement = document.querySelector(context.selector);
         if(!domElement.value) {
-            contecst.validator.generateError('Can not be empty!');
+            context.validator.generateError('Can not be empty!');
         }
     }
 
@@ -45,15 +44,15 @@ class TextField extends Field
         this.validateSet.push(this.textValidate);
     }
 
-    textValidate(contecst)
+    textValidate(context)
     {
-        let domElement = document.querySelector(contecst.selector);
+        let domElement = document.querySelector(context.selector);
         if(domElement.value.match(/"/i) || domElement.value.match(/'/i)) {
-            contecst.validator.generateError('Contains \" \' symbol(s)');
+            context.validator.generateError('Contains \" \' symbol(s)');
         }
 
         if(domElement.value.length  > 0 && domElement.value.length  < 3) {
-            contecst.validator.generateError('Text should has more than 2 charts');
+            context.validator.generateError('Text should has more than 2 charts');
         }
     }
 }
@@ -66,12 +65,12 @@ class PassField extends Field
         this.validateSet.push(this.passwordValidate);
     }
 
-    passwordValidate(contecst)
+    passwordValidate(context)
     {
-        let domElement = document.querySelector(contecst.selector);
-        let conf = document.querySelector(contecst.passwordConfirmation.selector);
+        let domElement = document.querySelector(context.selector);
+        let conf = document.querySelector(context.passwordConfirmation.selector);
         if(domElement.value !== conf.value) {
-            contecst.validator.generateError('Password does not match!');
+            context.validator.generateError('Password does not match!');
         }
     }
 }
@@ -83,12 +82,12 @@ class EmailField extends Field
         this.validateSet.push(this.emailValidate);
     }
 
-    emailValidate(contecst)
+    emailValidate(context)
     {
-        let domElement = document.querySelector(contecst.selector);
+        let domElement = document.querySelector(context.selector);
         let regExp = "([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$";
         if(!domElement.value.match(regExp)) {
-            contecst.validator.generateError('E-mail does not correct! E-mail should contains @');
+            context.validator.generateError('E-mail does not correct! E-mail should contains @');
         }
     }
 }
@@ -97,10 +96,11 @@ class ErrorGenerator
 {
     constructor() {
         this.errorContainer = document.createElement('div');
+        console.log(this.errorContainer);
     }
     generate(errorText) {
         this.errorContainer.className = 'error';
-        this.errorContainer.styleColor = 'red';
+        this.errorContainer.style.color = 'red';
         this.errorContainer.innerHTML = errorText;
         return this;
     }
@@ -126,17 +126,15 @@ class Validator
         domElement.focus();
     }
 
-
     removeErrorStyles() {
         const errors = document.querySelectorAll('.error');
         if (errors.length) {
             errors.forEach(function (error) {
+                error.nextSibling.style.borderColor = 'green';
                 error.remove();
             });
         }
-        // this.element.style.borderColor= 'green';
     }
-
 }
 
 class Submit
@@ -154,32 +152,26 @@ class Submit
             event.preventDefault();
             self.form.validator.removeErrorStyles();
             self.form.fieldSetValidate();
+            if(formElement.querySelectorAll('.error').length <= 0) {
+                document.querySelector('.modal').style.display = 'block';
+            }
         })
     }
-
 }
 
 const passConfirmField = new Field('passwordConfirmation', '.passwordConfirmation');
 const fields = [
     new TextField('fname', '.firstName'),
     new TextField('lname', '.lastName'),
+    new TextField('birthday', '.birthday'),
     new TextField('country', '.country'),
+    new TextField('address', '.address'),
     passConfirmField,
     new PassField('password', '.password', passConfirmField),
     new EmailField('email', '.email'),
     new TextField('note', '.note'),
 ];
+
 const form = new Form('.form', fields);
-
-// const validate = function (event){
-//     const errors = form.querySelectorAll('.error');
-//     if(errors.length > 0){
-//         // event.preventDefault();
-//         console.log('You have errors')
-//     } else {
-//         document.querySelector('.modal').style.display = 'block';
-//     }
-// }
-
 const submit = new Submit(form);
 submit.init();
